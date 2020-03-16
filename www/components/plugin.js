@@ -24,3 +24,19 @@ $(document).on("click","#btn3",function(){
 $(document).on("click","#btn4",function(){
     navigator.vibrate(6000);
 });
+
+$(document).on("click","#btn5",function(){
+    var onSuccess = function(position) {
+      $("#lat").val(position.coords.latitude);
+      $("#long").val(position.coords.longitude);
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+});
